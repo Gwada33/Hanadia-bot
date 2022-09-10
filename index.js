@@ -9,13 +9,22 @@ const Client = new Discord.Client({
 })
 
 
-var data2 = new SlashCommandBuilder()
+var ping = new SlashCommandBuilder()
 .setName("ping")
 .setDescription("Ping du bot")
 
+var clear = new SlashCommandBuilder()
+.setName("clear")
+.setDescription("Clear un nombre de messages défini");
+.addIntegerOption(option => 
+  option
+  .setName("Nombre")
+  .setDescription("Nombre de messages")
+  .setRequired(true))
 
 Client.on('ready', function () {
-  Client.application.commands.create(data2)
+  Client.application.commands.create(ping)
+  Client.application.commands.create(clear)
   console.log("Je suis connecté !")
 })
 
@@ -30,5 +39,21 @@ Client.on("interactionCreate", interaction => {
   }
 })
 
+Client.on("interactionCreate", interaction => {
+  if(interaction.isCommand()){
+    if(interaction.commandName == "clear")
+    if(!interaction.member.permissions.has("MANAGE_MESSAGES")){
+      interaction.reply({content: "Tu n'as pas les permissions requise pour executer cette commande", ephemeral: true});
+    } else{
+      var number = interaction.options.getInteger()
+      if(number < 1 || number > 100){
+        interaction.reply({content: "Tu ne peux supprimer de message avec la valuer **" + number + "**, sa ne peux que etre entre 1 et 100", ephemeral: true})
+      } else {
+        interaction.channel.bulkDelete(number)
+        interaction.reply({content: "Tu as supprimer **" + number + "** messages", ephemeral: true})
+      }
+    }
+  }
+})
 
 Client.login("MTAxNzkxNzg0MDcxMzU5Njk3OA.GJlYT_.IXR9dEgiFVkfYcF-YLrDvH0hHXRKkuUBUeHOAU")
