@@ -5,3 +5,5 @@ const Client = new Discord.Client({
     Discord.Intents.FLAGS.GUILDS_MESSAGES,
   ],
 })
+
+Client.login("MTAxNzkxNzg0MDcxMzU5Njk3OA.GJlYT_.IXR9dEgiFVkfYcF-YLrDvH0hHXRKkuUBUeHOAU")
