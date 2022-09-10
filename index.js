@@ -1,5 +1,9 @@
 const Discord = require('discord.js')
-const bot = new Discord.Client()
+const Clien = new Discord.Client({
+  intents: [
+    Discord.Intents.FLAGS.GUILDS, 
+  ],
+})
 
 bot.on('ready', function () {
   console.log("Je suis connecté !")
