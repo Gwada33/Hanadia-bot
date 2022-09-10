@@ -11,7 +11,7 @@ Client.on('ready', function () {
   console.log("Je suis connecté !")
 })
 
-bot.on('message', message => {
+Client.on('message', message => {
   if(message.author.bot) return
   if (message.content === 'ping') {
     message.reply('pong !')
