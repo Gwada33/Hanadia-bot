@@ -18,7 +18,6 @@ var clear = new SlashCommandBuilder()
 .setDescription("Clear un nombre de messages défini")
 .addIntegerOption(option => 
   option
-  .setName("Nombre")
   .setDescription("Nombre de messages")
   .setRequired(true))
 
