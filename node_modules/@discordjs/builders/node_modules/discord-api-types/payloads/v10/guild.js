@@ -145,6 +145,10 @@ var GuildFeature;
      */
     GuildFeature["Hub"] = "HUB";
     /**
+     * Guild has disabled invite usage, preventing users from joining
+     */
+    GuildFeature["InvitesDisabled"] = "INVITES_DISABLED";
+    /**
      * Guild has access to set an invite splash background
      */
     GuildFeature["InviteSplash"] = "INVITE_SPLASH";
