@@ -15,7 +15,7 @@ var ping = new SlashCommandBuilder()
 
 var clear = new SlashCommandBuilder()
 .setName("clear")
-.setDescription("Clear un nombre de messages défini");
+.setDescription("Clear un nombre de messages défini")
 .addIntegerOption(option => 
   option
   .setName("Nombre")
