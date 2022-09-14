@@ -8,22 +8,15 @@ const Client = new Discord.Client({
   ],
 })
 
+ var prefix = "h/"
 
 var ping = new SlashCommandBuilder()
 .setName("ping")
 .setDescription("Ping du bot")
 
-var clear = new SlashCommandBuilder()
-.setName("clear")
-.setDescription("Clear un nombre de messages défini")
-.addIntegerOption(option => 
-  option
-  .setDescription("Nombre de messages")
-  .setRequired(true))
 
 Client.on('ready', function () {
   Client.application.commands.create(ping)
-  Client.application.commands.create(clear)
   console.log("Je suis connecté !")
 })
 
@@ -38,21 +31,21 @@ Client.on("interactionCreate", interaction => {
   }
 })
 
-Client.on("interactionCreate", interaction => {
-  if(interaction.isCommand()){
-    if(interaction.commandName == "clear")
-    if(!interaction.member.permissions.has("MANAGE_MESSAGES")){
-      interaction.reply({content: "Tu n'as pas les permissions requise pour executer cette commande", ephemeral: true});
-    } else{
-      var number = interaction.options.getInteger()
+Client.on("messageCreate", message => {
+  if(message.author.bot) return
+    if(message.content === prefix + "clear"){
+      var number = message.content.slice(8)
+      console.log(number)
       if(number < 1 || number > 100){
-        interaction.reply({content: "Tu ne peux supprimer de message avec la valuer **" + number + "**, sa ne peux que etre entre 1 et 100", ephemeral: true})
+        message.reply({content: "Tu ne peux supprimer de message avec la valuer **" + number + "**, sa ne peux que etre entre 1 et 100", ephemeral: true})
+        if(number == NaN){
+          message.reply({content: 'Not a Number', ephemeral: true})
+        }
       } else {
-        interaction.channel.bulkDelete(number)
-        interaction.reply({content: "Tu as supprimer **" + number + "** messages", ephemeral: true})
+        message.channel.bulkDelete(number)
+        message.reply({content: "Tu as supprimer **" + number + "** messages", ephemeral: true})
       }
     }
-  }
 })
 
 Client.login("MTAxNzkxNzg0MDcxMzU5Njk3OA.GJlYT_.IXR9dEgiFVkfYcF-YLrDvH0hHXRKkuUBUeHOAU")
