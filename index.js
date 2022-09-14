@@ -49,4 +49,6 @@ Client.on("messageCreate", message => {
     }
 })
 
-Client.login(TOKEN + TOKEN1 + TOKEN2)
+console.log(TOKEN + TOKEN1 + TOKEN2)
+
+//Client.login(TOKEN + TOKEN1 + TOKEN2)
