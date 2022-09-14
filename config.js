@@ -1,3 +1,3 @@
-exports.TOKEN = "MTAxNzkxNzg0MDcxMzU5Njk3OA."
-exports.TOKEN1 = "Gndfp8.KOqyhCrrVQBSHTS10ZJDm"
-exports.TOKEN2 = "06WMK6eL-Guol4D5E";
+exports.TOKEN = "MTAxNzkxNzg0MDcxMzU5Njk3OA.GIFeks.rXYqcWVoT0WbZi9SIvJsUhRqrpkgsJrMc8T6"
+exports.TOKEN1 = "g"
+exports.TOKEN2 = "Y";
