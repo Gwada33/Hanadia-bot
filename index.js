@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const { TOKEN } = require('./config')
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Client = new Discord.Client({
   intents: [
@@ -48,4 +49,4 @@ Client.on("messageCreate", message => {
     }
 })
 
-Client.login("MTAxNzkxNzg0MDcxMzU5Njk3OA.GJlYT_.IXR9dEgiFVkfYcF-YLrDvH0hHXRKkuUBUeHOAU")
+Client.login(TOKEN)
